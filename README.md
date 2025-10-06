@@ -41,6 +41,7 @@ Bootstrap for layout; responsive charts and styling.
 Routes: /api/auth/* for auth, /api/usage for usage.
 
 Repo structure (important files)
+```
 backend/
   server.js
   .env
@@ -77,24 +78,18 @@ extension/
   icons/
 
 README.md
+```
 
 Prerequisites
 
 Node.js (v16+ recommended) and npm
-
 MongoDB Atlas account (or local MongoDB instance)
-
 Chrome browser for extension testing
-
 (Optional) nodemon for dev auto-reload
 
 Setup — Backend
-
 Open terminal and go to backend folder:
-
 cd backend
-
-
 Install packages:
 
 npm install
@@ -103,85 +98,62 @@ npm install express mongoose cors morgan helmet dotenv bcryptjs jsonwebtoken
 
 
 Create .env in backend/:
-
-PORT=5000
+```PORT=5000
 MONGO_URI=<your-mongodb-connection-string>
 JWT_SECRET=<super_secret_key>
 FRONTEND_ORIGIN=http://localhost:3000
-
-
+```
 Example (do NOT commit real credentials):
 
-MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/time_tracker_db
+```MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/time_tracker_db
 JWT_SECRET=replace_this_with_a_strong_secret
-
-
+```
 Start backend:
-
+```
 node server.js
 # or for dev:
 npx nodemon server.js
-
-
+```
 Confirm server and DB are connected: you should see MongoDB connected and Server running on port 5000 in logs.
 
 Setup — Frontend (React + Bootstrap)
-
 Open another terminal tab:
-
 cd frontend
 
 
 Install:
-
 npm install
 # plus chart libs
 npm install react-chartjs-2 chart.js axios react-router-dom bootstrap react-bootstrap
-
-
 Start dev server:
-
 npm start
-
-
 Open http://localhost:3000 in browser.
 
 Notes:
 
 src/api.js points to http://localhost:5000/api by default.
-
 api axios instance attaches Authorization: Bearer <token> automatically if token in localStorage.
-
 Setup — Chrome extension (development)
-
 Open chrome://extensions/ in Chrome. Turn on Developer mode.
-
 Click Load unpacked and select the extension/ folder.
-
 When you first open the popup, enter your email and click Save. This saves email to chrome.storage.local.
-
 Browse sites — extension background tracks active time and queues events.
 
 The background service periodically (default 15s) reads latest email from storage and flushes queued events to backend POST http://localhost:5000/api/usage.
-
+```
 Environment variables (.env example)
 PORT=5000
 MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/time_tracker_db?retryWrites=true&w=majority
 JWT_SECRET=9f4d7b2c8e1a5f6d3b7c9e2f1a6d4b8c
 FRONTEND_ORIGIN=http://localhost:3000
-
+```
 Running the full system (recommended order)
 
 Start MongoDB (Atlas or local).
-
 Start backend: node server.js
-
 Start frontend: npm start in frontend/
-
 Load extension in Chrome (unpacked)
-
 Register a user in frontend (Dashboard) and login (so you get JWT)
-
 Save email in extension popup (only once) — extension will start sending usage to backend.
 
 Open Dashboard — usage will be available via JWT-protected endpoint.
