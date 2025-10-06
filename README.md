@@ -275,3 +275,6 @@ Add server-side validation and rate-limiting.
 Add background sync improvements and robust offline storage for extension (IndexedDB).
 
 Add tests.
+<img width="1878" height="1034" alt="Image" src="https://github.com/user-attachments/assets/46366e38-7f3a-4156-9069-100f5f5b36a8" />
+<img width="1893" height="1024" alt="Image" src="https://github.com/user-attachments/assets/ede19c4b-1014-4aba-ac84-7b9e89513d45" />
+<img width="1881" height="1023" alt="Image" src="https://github.com/user-attachments/assets/67cb23b7-c382-492f-850e-eb3cdd54c9c0" />
